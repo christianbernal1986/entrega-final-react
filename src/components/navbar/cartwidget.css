@@ -1,0 +1,8 @@
+.cart{
+    display: flex;
+
+}
+.cart p{
+    margin-top: 50px;
+    font-size: 30px;
+}
