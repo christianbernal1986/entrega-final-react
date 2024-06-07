@@ -1,0 +1,26 @@
+.formulario form
+label{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+button{
+    display: block;
+}
+.formulario{
+    margin-left: 100px;
+    font-size:30px;
+    border: solid 0.5px;
+    border-color: black;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 25px;
+    width: 200px;
+    
+}
+form{
+    padding: 30px;
+}
+

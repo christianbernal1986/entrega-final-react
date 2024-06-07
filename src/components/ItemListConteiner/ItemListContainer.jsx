@@ -1,45 +1,77 @@
 import { useEffect,useState } from "react";
-import getproducts from "../../data/data";
+
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where} from "firebase/firestore";
+import db from "../../db/db.js";
 import "./itemlistconteiner.css"
 
 const ItemListContainer = ({saludo}) => {
     const [ productos, setProducts ] = useState([]);
+    const [loading, setLoading] = useState(false)
     const { idCategoria } = useParams()
 
+    const getProducts = () => {
+        setLoading(true)
+        const productsRef = collection (db, "productos")
+        getDocs(productsRef)
+        .then((productsDb) =>  {
+
+            //formateamos la data de la db
+
+            const data = productsDb.docs.map((producto) => {
+                return { id: producto.id , ...producto.data()}
+
+            })
+            setLoading(false)
+            setProducts(data)
+        })
+        
+    }
+
+    const getProductsByCategory = () => {
+        setLoading(true)
+        const productsRef = collection(db, "productos")
+        const q = query(productsRef, where("categoria", "==", idCategoria))
+        getDocs(q)
+        .then((productsDb) =>  {
+
+            //formateamos la data de la db
+
+            const data = productsDb.docs.map((producto) => {
+                return { id: producto.id , ...producto.data()}
+
+            })
+            setLoading(false)
+            setProducts(data)
+        })
+    }
+
     useEffect(() => {
-        getproducts()
-        .then((respuesta) => {
-            if(idCategoria){
-                //filtrar por categoria
-            const productosFiltrados= respuesta.filter((productoRes)=> productoRes.categoria === idCategoria)
-            setProducts(productosFiltrados)
-            }else{
-                //guardar todos los productos
-                setProducts(respuesta)
-            }
-            
+        
+        if(idCategoria){
+        getProductsByCategory()
+    }else{
+        getProducts()
+    }
     
-        })
-        .catch((error) => {
-            console.error(error);
-        })
-        .finally(() => {
-            console.log("finalizo la promesa");
-        });
+       
+
     },[idCategoria]);
 
     return (
 <div>
-<p>{ saludo } </p>
+<h2>{idCategoria ? `Filtrado: ${idCategoria}`: "Home"}</h2>
+{
+    loading ? <div className="loading">Cargando...</div> : <ItemList productos = {productos}/>
+}
     
 
-  <ItemList productos = {productos}/>
+  
  
 </div>
 
 
 );
 };
-export default ItemListContainer
+export default ItemListContainer 

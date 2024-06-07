@@ -3,9 +3,17 @@
 
 }
 .cart p{
+    color: black;
     margin-top: 50px;
-    font-size: 30px;
+    font-size: 25px;
+    
 }
 .cart img{
-    width: 100px;
+    width: 1000px;
+    height: 60px;
+    margin-top: 40px;
+}
+:link{
+    text-decoration: none;
+    
 }

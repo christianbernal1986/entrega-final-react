@@ -12,7 +12,7 @@ const NavBar = () => {
             <img src="https://i.pinimg.com/originals/e4/ff/2d/e4ff2dab7bc15971b72f306f4e1b40f8.png" alt="" />
             </Link>
             <ul className="categorias">
-                <Link  to="/categoria/buzos" className="categoria">Buzos</Link>
+                <Link  to="/categoria/buzos"  className="categoria">Buzos</Link>
                 <Link  to="/categoria/camperas" className="categoria">Camperas</Link>
                 <Link  to="/categoria/remeras" className="categoria">Remeras</Link>
                 <Link  to="/categoria/pantalones" className="categoria">Pantalones</Link>

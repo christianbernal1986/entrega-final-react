@@ -1,6 +1,7 @@
 .nav-bar{
     display: flex;
     justify-content: space-around;
+    
 }
 .nav-bar img{
     width: 150px;
@@ -11,12 +12,9 @@ text-decoration: none;
 font-size: 20px;
 font-family: Arial, Helvetica, sans-serif;
 
-
-
-
-
 }
 .nav-bar ul{
     margin-top: 50px;
+    
     
 }

@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-around;
 }
-.conteiner :link{
-    margin-left: 60px;
+.conteiner button{
+    margin-left: 40px;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
